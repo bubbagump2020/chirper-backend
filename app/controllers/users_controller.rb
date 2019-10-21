@@ -6,11 +6,15 @@ class UsersController < ApplicationController
         render json: user
     end
 
+    def index
+        render json: User.all
+    end
+
     def show
         render json: current_passenger
     end
 
-    
+
 
     def user_params
         params.permit(:username, :email, :password)
