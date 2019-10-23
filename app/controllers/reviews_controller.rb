@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :define_current_review
+    # before_action :define_current_review
     
     def index
         render json: Review.all

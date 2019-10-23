@@ -1,4 +1,4 @@
 class Review < ApplicationRecord
     belongs_to :user
-    belongs_to :song
+    # belongs_to :song
 end
