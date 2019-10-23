@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources(:songs)
   resources(:reviews)
   post('/login', to: 'authentication#login')
-  # post('logout', to: 'authentication#logut')
+  get('https://accounts.spotify.com/authorize', to: 'songs#new')
 end
