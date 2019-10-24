@@ -5,6 +5,7 @@ class AuthenticationController < ApplicationController
         # byebug
         if(user && user.authenticate(params[:password]))
             token = JWT.encode( { id: user.id }, 'asdljasldkfjs', 'HS256')
+            puts token
             render json: { success: true, id: user.id, token: token }
         else
             render json: { success: false, id: nil }
