@@ -3,7 +3,13 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
+        # spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+        # byebug
         render json: user
+    end
+
+    def current
+        render json: current_user
     end
 
     def index
@@ -11,7 +17,13 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: current_user
+        # byebug
+        spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+        # byebug
+        spotify_token = spotify_user.credentials.token
+        puts ("#{spotify_user}, #{spotify_token}")
+        # byebug
+        render json: { user: spotify_user, spotify_token: spotify_token }
     end
 
 
@@ -42,9 +54,15 @@ class UsersController < ApplicationController
         # Access private data
         spotify_user.country #=> "US"
         spotify_user.email   #=> "example@email.com"
-        spotify_user.playlists
-        byebug
-        puts spotify_user.playlists
+        spotify_user.playlists.each do |playlist|
+            playlist.tracks.each do |track|
+                puts track.name
+            end
+        end
+
+        redirect_to "http://localhost:3000/users/#{spotify_token}"
+
+        # byebug
         # byebug
         # spotify_user.credentials.token
         # Create playlist in user's Spotify account

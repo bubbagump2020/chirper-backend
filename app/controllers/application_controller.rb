@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
     rescue_from Exception, :with => :render_error_response
 
     def render_error_response(error)

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources(:reviews)
   post('/login', to: 'authentication#login')
   get '/auth/spotify/callback', to: 'users#spotify'
+  get '/current_user', to: 'users#current'
 end
