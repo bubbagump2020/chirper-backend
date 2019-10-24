@@ -18,7 +18,7 @@ require "action_cable/engine"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+RSpotify::authenticate("7d4d9ab4d46642b38d1d64b596d176fa", "bf17e26133fe41a8b8c273d9f8f5b630")
 module ChirperBackend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -32,6 +32,6 @@ module ChirperBackend
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+    config.api_only = false
   end
 end
