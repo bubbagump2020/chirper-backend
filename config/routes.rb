@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources(:songs)
   resources(:reviews)
   post('/login', to: 'authentication#login')
-  get('https://accounts.spotify.com/authorize', to: 'songs#new')
+  get '/auth/spotify/callback', to: 'users#spotify'
 end
